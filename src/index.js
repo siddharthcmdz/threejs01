@@ -1,6 +1,5 @@
 
 
-//import * as THREE from 'https://cdn.skypack.dev/three@0.132.2';
 import * as THREE from '../build/three.module.js';
 import { OrbitControls } from '../examples/jsm/controls/OrbitControls.js';
 import { Sky } from '../examples/jsm/objects/Sky.js';
@@ -8,6 +7,7 @@ import { GUI } from '../examples/jsm/libs/dat.gui.module.js';
 // import { OBJLoader } from './examples/jsm/loaders/OBJLoader.js';
 import {GLTFLoader} from '../examples/jsm/loaders/GLTFLoader.js';
 import * as Spector from '../build/spector.bundle.js';
+// import './three.css'
 
 console.log('Hej MagicSpace')
 const gui = new GUI();
