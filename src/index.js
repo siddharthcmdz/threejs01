@@ -1,12 +1,12 @@
 
 
-import * as THREE from '../build/three.module.js';
-import { OrbitControls } from '../examples/jsm/controls/OrbitControls.js';
-import { Sky } from '../examples/jsm/objects/Sky.js';
-import { GUI } from '../examples/jsm/libs/dat.gui.module.js';
+import * as THREE from '../three/three.module.js';
+import { OrbitControls } from '../three/jsm/controls/OrbitControls.js';
+// import { OrbitControls } from '../three/OrbitControls.js';
+import { Sky } from '../three/jsm/objects/Sky.js';
+import { GUI } from '../three/jsm/libs/dat.gui.module.js';
 // import { OBJLoader } from './examples/jsm/loaders/OBJLoader.js';
-import {GLTFLoader} from '../examples/jsm/loaders/GLTFLoader.js';
-import * as Spector from '../build/spector.bundle.js';
+// import {GLTFLoader} from '../three/jsm/loaders/GLTFLoader.js';
 // import './three.css'
 
 console.log('Hej MagicSpace')
@@ -91,7 +91,7 @@ const makePrimitives = (scene) => {
 
     //text 3d
     const textloader = new THREE.FontLoader();
-    textloader.load('../fonts/helvetiker_bold.typeface.json', (font) =>{
+    textloader.load('./fonts/helvetiker_bold.typeface.json', (font) =>{
         const text = 'threejs';
         const geometry = new THREE.TextGeometry(text, {
             font: font,
@@ -176,7 +176,7 @@ const initSky = (scene, renderer, camera) => {
 const makePlanarGrid = (size, scene) => {
     const planesz = size;
     const loader = new THREE.TextureLoader();
-    const texture = loader.load('../resources/images/checker.png');
+    const texture = loader.load('./resources/images/checker.png');
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
     texture.magFilter = THREE.NearestFilter;
@@ -202,7 +202,7 @@ const makeSolarSystem = (scene, objects) => {
     const sunHeightSegs = 32;
     const sphereGeom = new THREE.SphereGeometry(sunRadius, sunWidthSegs, sunHeightSegs);
     const texloader = new THREE.TextureLoader();
-    const suntex = texloader.load('../resources/images/sun2.jpg');
+    const suntex = texloader.load('./resources/images/sun2.jpg');
     const sunMat = new THREE.MeshBasicMaterial({ map: suntex});
     const sunMesh = new THREE.Mesh(sphereGeom, sunMat);
     sunMesh.scale.set(2, 2, 2);
@@ -210,14 +210,14 @@ const makeSolarSystem = (scene, objects) => {
     sunMesh.position.y = 2;
     
     
-    const earthtex = texloader.load('../resources/images/earth.jpg');
+    const earthtex = texloader.load('./resources/images/earth.jpg');
     const earthMat = new THREE.MeshPhongMaterial({map: earthtex});
     const earthMesh = new THREE.Mesh(sphereGeom, earthMat);
     // earthMesh.position.x = 10;
     // earthMesh.position.y = 2;
     // earthMesh.scale.set(0.5, 0.5, 0.5);
     
-    const moontex = texloader.load('../resources/images/moon.jpg');
+    const moontex = texloader.load('./resources/images/moon.jpg');
     const moonMat = new THREE.MeshPhongMaterial({map: moontex});
     const moonMesh = new THREE.Mesh(sphereGeom, moonMat);
     // moonMesh.scale.set(0.25, 0.25, 0.25);
@@ -251,14 +251,14 @@ const makeSolarSystem = (scene, objects) => {
     return objects;
 }
 
-const loadlGltf = (scene) => {
-    const gltfLoader = new GLTFLoader();
-    const url = 'resources/models/cartoon_lowpoly_small_city_free_pack/scene.gltf';
-    gltfLoader.load(url, (gltf) => {
-      const root = gltf.scene;
-      scene.add(root);
-    });    
-}
+// const loadlGltf = (scene) => {
+//     const gltfLoader = new GLTFLoader();
+//     const url = 'resources/models/cartoon_lowpoly_small_city_free_pack/scene.gltf';
+//     gltfLoader.load(url, (gltf) => {
+//       const root = gltf.scene;
+//       scene.add(root);
+//     });    
+// }
 
 const make01Scene = (renderer, scene) => {
     const rotatables = [];
